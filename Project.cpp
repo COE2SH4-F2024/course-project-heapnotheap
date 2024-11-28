@@ -112,7 +112,7 @@ void DrawScreen(void)
 
     MacUILib_printf("How to play!\nPress A, W, S, D to move 'Moe'\nA: Left, D: Right, W: Up, S: Down\n"); 
     MacUILib_printf("To change the speed press:\nLevel 1: - Level 2: ; Level 3: / Level 4: . Level 5: ,\n"); 
-    MacUILib_printf("Your current coordinates are: %d, %d\n", myPlayer->playerPos.x, myCharacter.y);
+    MacUILib_printf("Your current coordinates are: %d, %d\n", myPlayer->getPlayerPos().pos->x, myPlayer->getPlayerPos().pos->y);
     MacUILib_printf("Current key pressed is %c", myGM->getInput()); 
 
 }
