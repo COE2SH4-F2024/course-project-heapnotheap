@@ -58,7 +58,10 @@ void GetInput(void)
 
 void RunLogic(void)
 {
-    
+    if(myGM->getInput() == ' ') //if the player puts in an input of space, it exits the gaem 
+    {
+        myGM->setExitTrue(); 
+    }
 }
 
 void DrawScreen(void)
