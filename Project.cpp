@@ -85,9 +85,11 @@ void DrawScreen(void)
         for(j=0; j<=myGM->getBoardSizeY(); j++)
         {
             if (i == myPlayer->getPlayerPos().pos->x && j == myPlayer->getPlayerPos().pos->y)
-        
+            {
                 MacUILib_printf("%c", myPlayer->getPlayerPos().pos);
             }
+        
+    
 
             else
             {
@@ -102,17 +104,19 @@ void DrawScreen(void)
                 }
             }
         }
+    }
         MacUILib_printf("\n");
 
         
-    }
+    
 
     MacUILib_printf("How to play!\nPress A, W, S, D to move 'Moe'\nA: Left, D: Right, W: Up, S: Down\n"); 
     MacUILib_printf("To change the speed press:\nLevel 1: - Level 2: ; Level 3: / Level 4: . Level 5: ,\n"); 
     MacUILib_printf("Your current coordinates are: %d, %d\n", myPlayer->playerPos.x, myCharacter.y);
     MacUILib_printf("Current key pressed is %c", myGM->getInput()); 
-    
+
 }
+
 
 void LoopDelay(void)
 {
