@@ -7,13 +7,9 @@
 using namespace std;
 
 #define DELAY_CONST 100000
-GameMechs *myGM; //pointer of game mech type, just like int pointers 
-
-
 //Global Pointer Meant to Instantiate a player object on the heap
 Player *myPlayer;
-
-GameMechs *myGM;
+GameMechs *myGM; //pointer of game mech type, just like int pointers 
 bool exitFlag;
 
 void Initialize(void);
