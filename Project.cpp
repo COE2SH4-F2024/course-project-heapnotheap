@@ -12,6 +12,8 @@ Player *myPlayer;
 GameMechs *myGM; // pointer of game mech type, just like int pointers
 bool exitFlag;
 
+//testing push pull
+
 void Initialize(void);
 void GetInput(void);
 void RunLogic(void);
@@ -78,9 +80,9 @@ void DrawScreen(void)
 
         for(j=0; j<=myGM->getBoardSizeY(); j++)
         {
-            if (i == myPlayer->getPlayerPos() && j == myCharacter.y)
-            {
-                MacUILib_printf("%c", myCharacter.player);
+            if (i == myPlayer->getPlayerPos().pos->x && j == myPlayer->getPlayerPos().pos->y)
+        
+                MacUILib_printf("%c", myPlayer->getPlayerPos().pos);
             }
 
             else
