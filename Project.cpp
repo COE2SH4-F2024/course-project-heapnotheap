@@ -72,6 +72,9 @@ void RunLogic(void)
 
 void DrawScreen(void)
 {
+    MacUILib_clearScreen(); 
+    objPos playerPos = myPlayer -> getPlayerPos();   
+    MacUILib_printf("Player {x, y, sym] = {%d, %d, %c}\n", playerPos.pos ->x, playerPos.pos ->y, playerPos.symbol);
     MacUILib_clearScreen();
 
     int i, j;

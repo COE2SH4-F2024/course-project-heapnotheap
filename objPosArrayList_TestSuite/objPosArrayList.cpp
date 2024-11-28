@@ -1,7 +1,7 @@
 #include "objPosArrayList.h"
 #include <iostream>
 
-#include MACUI
+#include "MacUILib.h"
 using namespace std; 
 
 // Check lecture contents on general purpose array list construction, 
