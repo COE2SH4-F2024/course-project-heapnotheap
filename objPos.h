@@ -10,15 +10,23 @@ typedef struct
 
 class objPos
 {
+    
+
     public:
         Pos* pos;        
         char symbol;
 
-        objPos();
-        objPos(int xPos, int yPos, char sym);
+        objPos(); 
+        objPos(int xPos, int yPos, char sym); 
         
         // Respect the rule of six / minimum four
         // [TODO] Implement the missing special member functions to meet the minimum four rule
+
+        // copy alignment constructor
+
+        //destructor
+        
+        ~objPos();
         
         void setObjPos(objPos o);        
         void setObjPos(int xPos, int yPos, char sym);  
@@ -28,6 +36,7 @@ class objPos
         char getSymbolIfPosEqual(const objPos* refPos) const;
         
         bool isPosEqual(const objPos* refPos) const;
+
 };
 
 #endif

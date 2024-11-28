@@ -12,8 +12,6 @@ class Player
     // Only some sample members are included here
 
     // You will include more data members and member functions to complete your design.
-
-    
     public:
         enum Dir {UP, DOWN, LEFT, RIGHT, STOP};  // This is the direction state
 
@@ -28,7 +26,7 @@ class Player
 
     private:
         objPos playerPos; // Upgrade this in iteration 3.       
-        enum Dir myDir;
+        enum Dir myFSMMode;
 
         // Need a reference to the Main Game Mechanisms
         GameMechs* mainGameMechsRef;
