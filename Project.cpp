@@ -86,7 +86,7 @@ void DrawScreen(void)
         {
             if (i == myPlayer->getPlayerPos().pos->x && j == myPlayer->getPlayerPos().pos->y)
             {
-                MacUILib_printf("%c", myPlayer->getPlayerPos().pos);
+                MacUILib_printf("%c", myPlayer->getPlayerPos().symbol);
             }
         
     
