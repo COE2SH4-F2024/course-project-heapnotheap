@@ -13,6 +13,7 @@ GameMechs *myGM; // pointer of game mech type, just like int pointers
 bool exitFlag;
 
 //testing push pull
+// this works -Mahum was here
 
 void Initialize(void);
 void GetInput(void);

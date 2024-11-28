@@ -1,21 +1,30 @@
 #include "objPosArrayList.h"
+#include <iostream>
+
+#include MACUI
+using namespace std; 
 
 // Check lecture contents on general purpose array list construction, 
 // and modify it to support objPos array list construction.
 
 objPosArrayList::objPosArrayList()
 {
-    
+    listSize = 0; //initialy set to 0
+    arrayCapacity = ARRAY_MAX_CAP; // array size is 200 
+    // allocate memory on the heap for an int-array
+    aList = new int[ARRAY_MAX_CAP];
+    cout <<"Default Constructor Called"<< endl;
 }
 
 objPosArrayList::~objPosArrayList()
 {
-
+    cout <<"Destructor Called"<< endl;
+    delete[] aList;
 }
 
 int objPosArrayList::getSize() const
 {
-
+    return listSize;
 }
 
 void objPosArrayList::insertHead(objPos thisPos)
