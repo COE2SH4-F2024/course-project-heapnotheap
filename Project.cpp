@@ -60,21 +60,21 @@ void RunLogic(void)
     {
         myPlayer->updatePlayerDir();
 
-        if (myGM->getInput() == ' ') // if the player puts in an input of space, it exits the gaem
-        {
-            myGM->setExitTrue();
-        }
-
     }
 
-    myPlayer->movePlayer();
+    /*if (myGM->getInput() == ' ') // if the player puts in an input of space, it exits the gaem
+    {
+        myGM->setExitTrue();
+    }
+
+    myPlayer->movePlayer();*/
 }
 
 void DrawScreen(void)
 {
     MacUILib_clearScreen(); 
     objPos playerPos = myPlayer -> getPlayerPos();   
-    MacUILib_printf("Player {x, y, sym} = {%d, %d, %c}\n", playerPos.pos ->x, playerPos.pos ->y, playerPos.symbol);
+    MacUILib_printf("Player {x, y, sym] = {%d, %d, %c}\n", playerPos.pos ->x, playerPos.pos ->y, playerPos.symbol);
     MacUILib_clearScreen();
 
     int i, j;
@@ -83,14 +83,12 @@ void DrawScreen(void)
     {
 
         for(j=0; j<=myGM->getBoardSizeY(); j++)
-        {    // can you 
+        {
             if (i == myPlayer->getPlayerPos().pos->x && j == myPlayer->getPlayerPos().pos->y)
             {
-                MacUILib_printf("%c", myPlayer->getPlayerPos().pos);
+                MacUILib_printf("%c", playerPos.symbol);
             }
         
-    
-
             else
             {
                 if (j == 0 || j == myGM->getBoardSizeY() || i == 0 || i == myGM->getBoardSizeX())
@@ -104,15 +102,12 @@ void DrawScreen(void)
                 }
             }
         }
-    }
         MacUILib_printf("\n");
-
-        
-    
+    }
 
     MacUILib_printf("How to play!\nPress A, W, S, D to move 'Moe'\nA: Left, D: Right, W: Up, S: Down\n"); 
     MacUILib_printf("To change the speed press:\nLevel 1: - Level 2: ; Level 3: / Level 4: . Level 5: ,\n"); 
-    MacUILib_printf("Your current coordinates are: %d, %d\n", myPlayer->getPlayerPos().pos->x, myPlayer->getPlayerPos().pos->y);
+    MacUILib_printf("Your current coordinates are: %d, %d\n", playerPos.pos->x, playerPos.pos->y);
     MacUILib_printf("Current key pressed is %c", myGM->getInput()); 
 
 }

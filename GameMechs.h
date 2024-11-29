@@ -19,7 +19,7 @@ class GameMechs
         int boardSizeX;
         int boardSizeY;
 
-        objPos food;
+        objPos foodPos;
 
     public:
         GameMechs();
@@ -44,6 +44,11 @@ class GameMechs
         // More methods should be added here
         // this allows for multiplayer keyboard interaction
         void collectAsynchInput();
+
+
+        //food functions 
+        void generateFood(objPos blockOff); //function which takes in type objPos which contains coordinates of player 
+        objPos getFoodPos() const; //return type objPos 
 };
 
 #endif
