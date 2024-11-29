@@ -8,7 +8,7 @@
 class objPosArrayList
 {
     private:
-        objPos* aList;
+        objPos* aList[ARRAY_MAX_CAP];
         int listSize;
         int arrayCapacity;
 
