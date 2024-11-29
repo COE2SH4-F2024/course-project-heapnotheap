@@ -13,6 +13,7 @@ GameMechs *myGM; // pointer of game mech type, just like int pointers
 bool exitFlag;
 
 //testing push pull
+//sehaj push
 // this works -Mahum was here
 
 void Initialize(void);
@@ -72,6 +73,7 @@ void RunLogic(void)
 
 void DrawScreen(void)
 {
+
     MacUILib_clearScreen(); 
     objPos playerPos = myPlayer -> getPlayerPos();   
     MacUILib_printf("Player {x, y, sym] = {%d, %d, %c}\n", playerPos.pos ->x, playerPos.pos ->y, playerPos.symbol);
