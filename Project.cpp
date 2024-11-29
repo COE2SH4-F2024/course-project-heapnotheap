@@ -13,7 +13,6 @@ GameMechs *myGM; // pointer of game mech type, just like int pointers
 bool exitFlag;
 
 //testing push pull
-//sehaj push
 // this works -Mahum was here
 
 void Initialize(void);
@@ -51,7 +50,7 @@ void Initialize(void)
 
 void GetInput(void)
 {
-    myGM->collectAsynchInput();
+    myGM->getInput();
 }
 
 void RunLogic(void)
@@ -60,12 +59,18 @@ void RunLogic(void)
     myPlayer->updatePlayerDir();
     myPlayer->movePlayer();
 
+    
+    if (myGM-> getInput() != '\0')
+    {
+        myPlayer->updatePlayerDir();
+    }
+    
+
     if (myGM->getInput() == ' ') // if the player puts in an input of space, it exits the gaem
     {
         myGM->setExitTrue();
     }
 
-    myPlayer->movePlayer();
 }
 
 void DrawScreen(void)
@@ -106,7 +111,7 @@ void DrawScreen(void)
     MacUILib_printf("How to play!\nPress A, W, S, D to move 'Moe'\nA: Left, D: Right, W: Up, S: Down\n"); 
     MacUILib_printf("To change the speed press:\nLevel 1: - Level 2: ; Level 3: / Level 4: . Level 5: ,\n"); 
     MacUILib_printf("Your current coordinates are: %d, %d\n", playerPos.pos->x, playerPos.pos->y);
-    MacUILib_printf("Current key pressed is %c", myGM->getInput()); 
+    MacUILib_printf("Current key pressed is %c", myGM->getInput());
 
 }
 

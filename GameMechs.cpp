@@ -17,7 +17,7 @@ GameMechs::GameMechs(int boardX, int boardY)
     exitFlag = false;
     loseFlag = false;
     score = 0;
-    boardSizeX = boardX;
+    boardSizeX = boardSizeX;
     boardSizeY = boardSizeY;
 }
 
@@ -35,11 +35,15 @@ bool GameMechs::getExitFlagStatus() const
 bool GameMechs::getLoseFlagStatus() const
 {
     return loseFlag;
-}
-    
+}  
 
 char GameMechs::getInput() 
 {
+    if(MacUILib_hasChar())
+    {
+        input = MacUILib_getChar();
+    }
+    
     return input;
 }
 
@@ -55,7 +59,6 @@ void GameMechs::collectAsynchInput()
         setExitTrue();
     }
 }
-
 
 int GameMechs::getScore() const
 {
