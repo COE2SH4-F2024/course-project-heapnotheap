@@ -13,6 +13,7 @@ GameMechs *myGM; // pointer of game mech type, just like int pointers
 bool exitFlag;
 
 //testing push pull
+//sehaj push
 // this works -Mahum was here
 
 void Initialize(void);
@@ -50,28 +51,26 @@ void Initialize(void)
 
 void GetInput(void)
 {
-    myGM->getInput();
+    myGM->collectAsynchInput();
 }
 
 void RunLogic(void)
 {
 
-    if (myGM->getInput() != '\0')
-    {
-        myPlayer->updatePlayerDir();
+    myPlayer->updatePlayerDir();
+    myPlayer->movePlayer();
 
-    }
-
-    /*if (myGM->getInput() == ' ') // if the player puts in an input of space, it exits the gaem
+    if (myGM->getInput() == ' ') // if the player puts in an input of space, it exits the gaem
     {
         myGM->setExitTrue();
     }
 
-    myPlayer->movePlayer();*/
+    myPlayer->movePlayer();
 }
 
 void DrawScreen(void)
 {
+
     MacUILib_clearScreen(); 
     objPos playerPos = myPlayer -> getPlayerPos();   
     MacUILib_printf("Player {x, y, sym] = {%d, %d, %c}\n", playerPos.pos ->x, playerPos.pos ->y, playerPos.symbol);
