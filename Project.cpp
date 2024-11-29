@@ -51,24 +51,21 @@ void Initialize(void)
 
 void GetInput(void)
 {
-    myGM->getInput();
+    myGM->collectAsynchInput();
 }
 
 void RunLogic(void)
 {
 
-    if (myGM->getInput() != '\0')
-    {
-        myPlayer->updatePlayerDir();
+    myPlayer->updatePlayerDir();
+    myPlayer->movePlayer();
 
-    }
-
-    /*if (myGM->getInput() == ' ') // if the player puts in an input of space, it exits the gaem
+    if (myGM->getInput() == ' ') // if the player puts in an input of space, it exits the gaem
     {
         myGM->setExitTrue();
     }
 
-    myPlayer->movePlayer();*/
+    myPlayer->movePlayer();
 }
 
 void DrawScreen(void)

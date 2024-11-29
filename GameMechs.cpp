@@ -40,12 +40,20 @@ bool GameMechs::getLoseFlagStatus() const
 
 char GameMechs::getInput() 
 {
+    return input;
+}
+
+void GameMechs::collectAsynchInput()
+{
     if(MacUILib_hasChar())
     {
         input = MacUILib_getChar();
     }
 
-    return input;
+    if(input == ' ')
+    {
+        setExitTrue();
+    }
 }
 
 
