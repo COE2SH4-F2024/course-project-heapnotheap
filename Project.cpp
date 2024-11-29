@@ -60,11 +60,11 @@ void RunLogic(void)
     {
         myPlayer->updatePlayerDir();
 
-        if (myGM->getInput() == ' ') // if the player puts in an input of space, it exits the gaem
-        {
-            myGM->setExitTrue();
-        }
+    }
 
+    if (myGM->getInput() == ' ') // if the player puts in an input of space, it exits the gaem
+    {
+        myGM->setExitTrue();
     }
 
     myPlayer->movePlayer();
@@ -89,8 +89,6 @@ void DrawScreen(void)
                 MacUILib_printf("%c", myPlayer->getPlayerPos().symbol);
             }
         
-    
-
             else
             {
                 if (j == 0 || j == myGM->getBoardSizeY() || i == 0 || i == myGM->getBoardSizeX())
@@ -104,11 +102,8 @@ void DrawScreen(void)
                 }
             }
         }
-    }
         MacUILib_printf("\n");
-
-        
-    
+    }
 
     MacUILib_printf("How to play!\nPress A, W, S, D to move 'Moe'\nA: Left, D: Right, W: Up, S: Down\n"); 
     MacUILib_printf("To change the speed press:\nLevel 1: - Level 2: ; Level 3: / Level 4: . Level 5: ,\n"); 
