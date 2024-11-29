@@ -92,3 +92,28 @@ void GameMechs::clearInput()
 }
 
 // More methods should be added here
+
+
+
+void GameMechs::generateFood(objPos blockOff)
+{
+    //while food position != player position 
+    //random coordinate generation for food
+    
+    //if blockOff equals player position
+        //regenerate new coordinates within rage 
+
+
+    //umars weird idea 
+    //"lets say it generates a number number and its the player position"
+    //"you generate x and y from 0 to less than 1, multiply x by the x random and y by y random"
+    //"no matter what since you multiply by 1/different numbers you'll get new coordinates every time"
+    //"that would make it so that you get a new number in 2 lines rather than forever"
+
+}
+
+
+objPos GameMechs::getFoodPos() const
+{
+    return foodPos;
+} 
