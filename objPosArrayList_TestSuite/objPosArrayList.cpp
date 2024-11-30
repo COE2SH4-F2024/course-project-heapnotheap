@@ -1,41 +1,51 @@
 #include "objPosArrayList.h" //copy some header files
 #include <iostream>
 
-#include "MacUILib.h"
+//#include "MacUILib.h"
 using namespace std; //using names form the standard library
 
 // Check lecture contents on general purpose array list construction, 
 // and modify it to support objPos array list construction.
 
-objPosArrayList::objPosArrayList()
-{
+objPosArrayList::objPosArrayList(): listSize(0),  arrayCapacity(ARRAY_MAX_CAP){
     // <<"Default Constructor Called"<< 
-    listSize = 0; //initialy set to 0
-    arrayCapacity = ARRAY_MAX_CAP; // array size is 200 
+    
     // allocate memory on the heap for an int-array
     //create a 200 int array on the heap
     aList = new objPos[ARRAY_MAX_CAP]; // the new thing being made has to have the same type objPos*
-
+   
 }
 
-objPosArrayList::objPosArrayList(const objPosArrayList &m ) //creating a new object, incase an object is passed by value 
+objPosArrayList::objPosArrayList(const objPosArrayList& m) //creating a new object, incase an object is passed by value 
 {
     //<< "Copy Constructor called." <<
     listSize = m.listSize;
     arrayCapacity = m.arrayCapacity;
     aList = new objPos[ARRAY_MAX_CAP]; 
+    for(int i = 0; i < m.listSize; i++)
+    {
+            aList[i] = m.aList[i];
+    }
+
 }
 
-objPosArrayList & objPosArrayList::operator=(const objPosArrayList &m ) 
+objPosArrayList& objPosArrayList::operator=(const objPosArrayList &m) 
 {
-    //<< "Copy Assignment Constructor called." <<
+    //<< "Copy Asnment Constructor called." <<
     // 'this' is to a pointer reffering to the current object
     if (this != &m) 
     {
         this->listSize = m.listSize;
         this->arrayCapacity = m.arrayCapacity;
-        aList = new objPos[ARRAY_MAX_CAP]; 
+        aList = new objPos[m.arrayCapacity]; 
+
+        for(int i = 0; i < this->listSize; i++)
+        {
+            this->aList[i] = m.aList[i];
+        }
     }
+
+    return *this;
 }
 
 objPosArrayList::~objPosArrayList()
@@ -110,9 +120,11 @@ objPos objPosArrayList::getTailElement() const
 
 objPos objPosArrayList::getElement(int index) const
 {
+    /*
     if(index<0 || index >= listSize)
     {
-        return;
+        throw std::out_of_range("Index is out of bounds");
     }
+    */
     return aList[index];
 }
