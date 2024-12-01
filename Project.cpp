@@ -27,7 +27,7 @@ int main(void)
 
     Initialize();
 
-    while (myGM->getExitFlagStatus() == false)
+    while (exitFlag = 1)
     {
         GetInput();
         RunLogic();
@@ -45,12 +45,12 @@ void Initialize(void)
 
     myGM = new GameMechs();
     myPlayer = new Player(myGM);
-    exitFlag = false;
+    //exitFlag = false;
 }
 
 void GetInput(void)
 {
-    myGM->getInput();
+    myGM->collectAsynchInput();
 }
 
 void RunLogic(void)
@@ -60,16 +60,16 @@ void RunLogic(void)
     myPlayer->movePlayer();
 
     
-    if (myGM-> getInput() != '\0')
-    {
-        myPlayer->updatePlayerDir();
-    }
+    //if (myGM-> getInput() != '\0')
+    //{
+        //myPlayer->updatePlayerDir();
+    //}
     
 
-    if (myGM->getInput() == ' ') // if the player puts in an input of space, it exits the gaem
-    {
-        myGM->setExitTrue();
-    }
+    //if (myGM->getInput() == ' ') // if the player puts in an input of space, it exits the gaem
+    //{
+        //myGM->setExitTrue();
+    //}
 
 }
 
@@ -85,12 +85,12 @@ void DrawScreen(void)
 
     int i, j;
 
-    for (i=0; i<boardX; i++)
+    for (i=0; i<=boardX; i++)
     {
 
-        for(j=0; j< boardY; j++)
+        for(j=0; j<= boardY; j++)
         {
-            if (i == myPlayer->getPlayerPos().pos->x && j == myPlayer->getPlayerPos().pos->y)
+            if (i == playerPos.pos ->x && j == playerPos.pos ->y)
             {
                 MacUILib_printf("%c", playerPos.symbol);
             }
@@ -119,6 +119,7 @@ void DrawScreen(void)
     MacUILib_printf("How to play!\nPress A, W, S, D to move 'Moe'\nA: Left, D: Right, W: Up, S: Down\n"); 
     MacUILib_printf("To change the speed press:\nLevel 1: - Level 2: ; Level 3: / Level 4: . Level 5: ,\n"); 
     MacUILib_printf("Your current coordinates are: %d, %d\n", playerPos.pos->x, playerPos.pos->y);
+    MacUILib_printf("foods current coorinates are [%d, %d]\n", foodPos.pos->x, foodPos.pos->y);
     MacUILib_printf("Current key pressed is %c", myGM->getInput());
 
 }
