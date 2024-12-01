@@ -29,7 +29,7 @@ int objPosArrayList::getSize() const
 
 void objPosArrayList::insertHead(objPos thisPos)
 {
-    
+    return aList[0] = thisPos;
 }
 
 void objPosArrayList::insertTail(objPos thisPos)

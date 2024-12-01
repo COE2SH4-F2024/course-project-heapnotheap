@@ -60,6 +60,7 @@ void GameMechs::collectAsynchInput()
     }
 }
 
+
 int GameMechs::getScore() const
 {
     return score;

@@ -87,7 +87,7 @@ void DrawScreen(void)
 
         for(j=0; j<=myGM->getBoardSizeY(); j++)
         {
-            if (i == playerPos.pos->x && j == playerPos.pos->y)
+            if (i == myPlayer->getPlayerPos().pos->x && j == myPlayer->getPlayerPos().pos->y)
             {
                 MacUILib_printf("%c", playerPos.symbol);
             }
