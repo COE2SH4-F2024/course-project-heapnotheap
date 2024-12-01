@@ -24,7 +24,7 @@ class objPos
 
         // copy alignment constructor
 
-        objPos(const objPos &o)
+        objPos(const objPos &o);
 
         //destructor
         

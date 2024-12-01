@@ -9,6 +9,7 @@ GameMechs::GameMechs()
     score = 0;
     boardSizeX = 15; 
     boardSizeY = 30;
+    foodPos.setObjPos(2, 3, 'o'); //initializes first food to be outside gameboard
 }
 
 GameMechs::GameMechs(int boardX, int boardY)
@@ -19,6 +20,7 @@ GameMechs::GameMechs(int boardX, int boardY)
     score = 0;
     boardSizeX = boardSizeX;
     boardSizeY = boardSizeY;
+    foodPos.setObjPos(2, 3, 'o'); //initializes first food to be outside gameboard
 }
 
 // do you need a destructor?
@@ -111,10 +113,43 @@ void GameMechs::generateFood(objPos blockOff)
 {
     //while food position != player position 
     //random coordinate generation for food
+    /*srand(time(NULL));
+
+    int count = 0;
+    //while()
+    //{
+        int x, y; 
+        int i;
+        x = rand() %boardSizeX + 1;
+        y = rand() %boardSizeY + 1;
+
+        if((x ==  && y ==myCharacter.y))
+        {
+            x = rand() %xRange + 1;
+            y = rand() %yRange + 1;
+        }
+
+        for (i=0; i<listSize; i++)
+        {
+            if(x == list[i].y || y ==list[i].x || playerPos->x == x && playerPos->y == y)
+            {
+                x = rand() %xRange + 1;
+                y = rand() %yRange + 1;
+            }
+        }
+
+        if (i == listSize)
+        {
+            list[count].x = x;
+            list[count].y = y;
+        }
+
+    //} */
+
+
     
     //if blockOff equals player position
         //regenerate new coordinates within rage 
-
 
     //umars weird idea 
     //"lets say it generates a number number and its the player position"

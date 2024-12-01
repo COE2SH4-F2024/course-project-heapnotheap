@@ -27,7 +27,7 @@ objPos::objPos( const objPos &o)
     symbol = o.symbol;
 }
 
-objPos & objPos::operator=( const objPos &o) 
+objPos & objPos::operator=(const objPos &o)
 {
 
     if (this != &o)
