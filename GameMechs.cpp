@@ -1,5 +1,7 @@
 #include "GameMechs.h"
-#include "MacUILib.h"
+#include "MacUILib.h" 
+#include <time.h>
+#include "Player.h"
 
 GameMechs::GameMechs()
 {
@@ -111,40 +113,28 @@ void GameMechs::clearInput()
 
 void GameMechs::generateFood(objPos blockOff)
 {
+
+
     //while food position != player position 
+
     //random coordinate generation for food
-    /*srand(time(NULL));
+    srand(time(NULL));
 
     int count = 0;
     //while()
     //{
-        int x, y; 
-        int i;
-        x = rand() %boardSizeX + 1;
-        y = rand() %boardSizeY + 1;
 
-        if((x ==  && y ==myCharacter.y))
+        foodPos.pos->x = rand() % (boardSizeX - 2) + 1;
+        foodPos.pos->y = rand() % (boardSizeY - 2) + 1;
+
+        if((foodPos.pos->x == blockOff.pos->x && foodPos.pos->y == blockOff.pos->y)) //want to access the characters position 
         {
-            x = rand() %xRange + 1;
-            y = rand() %yRange + 1;
+            foodPos.pos->x = rand() % (boardSizeX - 2) + 1;
+            foodPos.pos->y = rand() % (boardSizeY - 2) + 1;
         }
 
-        for (i=0; i<listSize; i++)
-        {
-            if(x == list[i].y || y ==list[i].x || playerPos->x == x && playerPos->y == y)
-            {
-                x = rand() %xRange + 1;
-                y = rand() %yRange + 1;
-            }
-        }
 
-        if (i == listSize)
-        {
-            list[count].x = x;
-            list[count].y = y;
-        }
-
-    //} */
+    //} 
 
 
     
