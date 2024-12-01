@@ -6,9 +6,15 @@ Player::Player(GameMechs *thisGMRef)
     myFSMMode = STOP;
 
     // more actions to be included
+    playerPosList = new objPosArrayList();
+
+    objPos initialPos = {mainGameMechsRef->getBoardSizeX() / 2, mainGameMechsRef->getBoardSizeY() / 2 , '@'};
+
+    /*
     playerPos.pos->x = mainGameMechsRef->getBoardSizeX() / 2;
     playerPos.pos->y = mainGameMechsRef->getBoardSizeY() / 2;
     playerPos.symbol = '@';
+    */
 }
 
 Player::~Player()
@@ -21,8 +27,8 @@ Player::~Player()
 
 objPos Player::getPlayerPos() const
 {
-    // return the reference to the playerPos arrray list
-    return playerPos;
+    // return the reference to the playerPos arrray list --> update to return
+    return playerPosList->getHeadElement();
 }
 
 void Player::updatePlayerDir()
@@ -77,23 +83,33 @@ void Player::updatePlayerDir()
 
 void Player::movePlayer()
 {
+    
     // PPA3 Finite State Machine logic
     switch (myFSMMode)
     {
     case LEFT:
-        playerPos.pos->x++;
+        //playerPos.pos->x++;
+        playerPosList->getHeadElement().x++;
+        playerPosList->getHeadElement();
+        playerPosList->removeTail();
         break;
 
     case RIGHT:
         playerPos.pos->x--;
+        playerPosList->getHeadElement();
+        playerPosList->removeTail();
         break;
 
     case UP:
         playerPos.pos->y--;
+        playerPosList->getHeadElement();
+        playerPosList->removeTail();
         break;
 
     case DOWN:
         playerPos.pos->y++;
+        playerPosList->getHeadElement();
+        playerPosList->removeTail();
         break;
     }
 
