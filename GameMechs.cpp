@@ -51,7 +51,7 @@ char GameMechs::getInput()
     return input;
 }
 
-void GameMechs::collectAsynchInput()
+char GameMechs::collectAsynchInput()
 {
     if(MacUILib_hasChar())
     {

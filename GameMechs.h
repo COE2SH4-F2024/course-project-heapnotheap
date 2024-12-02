@@ -44,7 +44,7 @@ class GameMechs
         
         // More methods should be added here
         // this allows for multiplayer keyboard interaction
-        void collectAsynchInput();
+        char collectAsynchInput();
 
 
         //food functions 

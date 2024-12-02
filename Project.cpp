@@ -59,7 +59,6 @@ void RunLogic(void)
 {
 
     myPlayer->movePlayer();
-    myPlayer->updatePlayerDir();
 
     
     if (myGM->getInput() != '\0')
