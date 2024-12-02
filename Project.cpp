@@ -102,7 +102,7 @@ void DrawScreen(void)
            
             else{
 
-                if (i == myPlayer->getPlayerPos().pos->x && j == myPlayer->getPlayerPos().pos->y)
+                if (i == playerPos.pos ->x && j == playerPos.pos ->y)
                 {
                     MacUILib_printf("%c", playerPos.symbol);
                 }

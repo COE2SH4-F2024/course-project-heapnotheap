@@ -23,7 +23,6 @@ class objPos
         // [TODO] Implement the missing special member functions to meet the minimum four rule
 
         // copy alignment constructor
-        objPos& operator =(const objPos &o);
 
         objPos(const objPos &o);
         objPos& operator =(const objPos &o);
