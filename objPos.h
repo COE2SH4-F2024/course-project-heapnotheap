@@ -26,7 +26,6 @@ class objPos
         objPos& operator =(const objPos &o);
 
         objPos(const objPos &o);
-        objPos& operator =(const objPos &o);
 
         //destructor
         
