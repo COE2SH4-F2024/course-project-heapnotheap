@@ -11,9 +11,9 @@ Player::Player(GameMechs *thisGMRef)
     objPos initialPos = {mainGameMechsRef->getBoardSizeX() / 2, mainGameMechsRef->getBoardSizeY() / 2 , '@'};
 
     
-    /*playerPos.pos->x = mainGameMechsRef->getBoardSizeX() / 2;
+    playerPos.pos->x = mainGameMechsRef->getBoardSizeX() / 2;
     playerPos.pos->y = mainGameMechsRef->getBoardSizeY() / 2;
-    playerPos.symbol = '@';*/
+    playerPos.symbol = '@';
     
 }
 
