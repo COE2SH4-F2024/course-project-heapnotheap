@@ -89,7 +89,7 @@ void Player::movePlayer()
     {
     case LEFT:
         //playerPos.pos->x++;
-        playerPosList->getHeadElement().x++;
+        playerPosList->getHeadElement()->x++;
         playerPosList->getHeadElement();
         playerPosList->removeTail();
         break;
