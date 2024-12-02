@@ -113,28 +113,28 @@ void GameMechs::clearInput()
 
 void GameMechs::generateFood(objPos blockOff)
 {
-
-
     //while food position != player position 
 
     //random coordinate generation for food
     srand(time(NULL));
 
-    int count = 0;
-    //while()
-    //{
+    bool isValidPos = false;
+    int randX;
+    int randY;
 
-        foodPos.pos->x = rand() % (boardSizeX - 2) + 1;
-        foodPos.pos->y = rand() % (boardSizeY - 2) + 1;
+    while(!isValidPos)
+    {
 
-        if((foodPos.pos->x == blockOff.pos->x && foodPos.pos->y == blockOff.pos->y)) //want to access the characters position 
+        randX = rand() % (boardSizeX - 2) + 1;
+        randY = rand() % (boardSizeY - 2) + 1;
+
+        if(randX != blockOff.pos->x || randY != blockOff.pos->y) //want to access the characters position 
         {
-            foodPos.pos->x = rand() % (boardSizeX - 2) + 1;
-            foodPos.pos->y = rand() % (boardSizeY - 2) + 1;
+            isValidPos = true; //checks to see if its not same as player, if not same then condition met and leaves loop
         }
+    } 
 
-
-    //} 
+    foodPos.setObjPos(randX, randY, 'o'); //sets food coordinates
 
 
     
