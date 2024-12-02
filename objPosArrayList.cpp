@@ -3,7 +3,6 @@
 // Paste your Tested implementation here.
 #include "objPosArrayList.h" //copy some header files
 #include <iostream>
-
 //#include "MacUILib.h"
 using namespace std; //using names form the standard library
 
@@ -19,15 +18,15 @@ objPosArrayList::objPosArrayList(): listSize(0),  arrayCapacity(ARRAY_MAX_CAP){
    
 }
 
-objPosArrayList::objPosArrayList(const objPosArrayList& m) //creating a new object, incase an object is passed by value 
+objPosArrayList::objPosArrayList(const objPosArrayList &m) //creating a new object, incase an object is passed by value 
 {
     //<< "Copy Constructor called." <<
     listSize = m.listSize;
     arrayCapacity = m.arrayCapacity;
     aList = new objPos[ARRAY_MAX_CAP]; 
-    for(int i = 0; i < m.listSize; i++)
+    for(int i = 0; i < listSize; i++)
     {
-            aList[i] = m.aList[i];
+            aList[i] = m.getElement(i);
     }
 
 }

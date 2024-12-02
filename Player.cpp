@@ -7,18 +7,15 @@ Player::Player(GameMechs *thisGMRef)
 
     // more actions to be included
     
-    /*
+    
     playerPosList = new objPosArrayList();
 
     objPos initialPos = {mainGameMechsRef->getBoardSizeX() / 2, mainGameMechsRef->getBoardSizeY() / 2 , '@'};
 
-    player->insertHead()
-    */
     
-    
-    playerPos.pos->x = mainGameMechsRef->getBoardSizeX() / 2;
-    playerPos.pos->y = mainGameMechsRef->getBoardSizeY() / 2;
-    playerPos.symbol = '@';
+    //playerPos.pos->x = mainGameMechsRef->getBoardSizeX() / 2;
+    //playerPos.pos->y = mainGameMechsRef->getBoardSizeY() / 2;
+    //playerPos.symbol = '@';
     
 }
 
@@ -33,8 +30,8 @@ Player::~Player()
 objPos Player::getPlayerPos() const
 {
     // return the reference to the playerPos arrray list --> update to return
-    //return playerPosList->getHeadElement();
-    return playerPos;
+    return playerPosList->getHeadElement();
+    //return playerPos;
 }
 
 void Player::updatePlayerDir()
@@ -91,46 +88,48 @@ void Player::updatePlayerDir()
 void Player::movePlayer()
 {
     objPos currentHead;
-    //playerPosList->getHeadElement(currentHead);
+    currentHead = playerPosList->getHeadElement();
 
-    //int newX = currentHead.x;
-    //int newY = currentHead.y;
+    int newX = currentHead.pos->x;
+    int newY = currentHead.pos->y;
 
     // PPA3 Finite State Machine logic
     switch (myFSMMode)
     {
     case LEFT:
-        playerPos.pos->x++;
-
-        /*
-        playerPosList->getHeadElement().x++;
-        playerPosList->getHeadElement();
+        //playerPos.pos->x++;
+        playerPosList->getHeadElement().pos->x++;
+        //newX.x++;
+        //playerPosList->getHeadElement();
         playerPosList->removeTail();
-        */
+        
         break;
 
     case RIGHT:
-        playerPos.pos->x--;
+        //playerPos.pos->x--;
+        playerPosList->getHeadElement().pos->x--;
         /*
         playerPosList->getHeadElement();
-        playerPosList->removeTail();
+        
         */
+       playerPosList->removeTail();
         break;
 
     case UP:
-        playerPos.pos->y--;
+        playerPosList->getHeadElement().pos->y--;
         /*
         playerPosList->getHeadElement();
-        playerPosList->removeTail();
+        
         */
+        playerPosList->removeTail();
         break;
 
     case DOWN:
-        playerPos.pos->y++;
-        /*
+        //playerPos.pos->y++;
+        playerPosList->getHeadElement().pos->y++;
         playerPosList->getHeadElement();
         playerPosList->removeTail();
-        */
+        
         break;
 
     case STOP:
@@ -139,25 +138,25 @@ void Player::movePlayer()
         return;
     }
 
-    if (playerPos.pos->x >= mainGameMechsRef->getBoardSizeX()) // wrap-around
+    if (playerPosList->getHeadElement().pos->x >= mainGameMechsRef->getBoardSizeX()) // wrap-around
     {
-        playerPos.pos->x = 2;
+        playerPosList->getHeadElement().pos->x = 2;
     }
     else if (playerPos.pos->x <= 1)
     {
-        playerPos.pos->x = 18;
+        playerPosList->getHeadElement().pos->x = 18;
     }
 
-    else if (playerPos.pos->y >= mainGameMechsRef->getBoardSizeY())
+    else if (playerPosList->getHeadElement().pos->y >= mainGameMechsRef->getBoardSizeY())
     {
-        playerPos.pos->y = 2;
+        playerPosList->getHeadElement().pos->y = 2;
     }
     else if (playerPos.pos->y == 1)
     {
-        playerPos.pos->y = 8;
+        playerPosList->getHeadElement().pos->y = 8;
     }
 
-    currentHead.setObjPos(playerPos.pos->x, playerPos.pos->y, currentHead.getSymbol());
+    currentHead.setObjPos(playerPosList->getHeadElement().pos->x, playerPosList->getHeadElement().pos->y, currentHead.getSymbol());
     playerPosList ->insertHead(currentHead);
 
 }
