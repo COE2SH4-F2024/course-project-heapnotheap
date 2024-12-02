@@ -47,6 +47,7 @@ void Initialize(void)
     myGM = new GameMechs();
     myPlayer = new Player(myGM);
     //exitFlag = false;
+    myGM->generateFood(myPlayer->getPlayerPos());
 }
 
 void GetInput(void)
@@ -71,7 +72,8 @@ void RunLogic(void)
     {
         myGM->setExitTrue();
     }
-    //fix exit flag
+    
+
 
 }
 

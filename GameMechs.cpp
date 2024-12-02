@@ -125,8 +125,8 @@ void GameMechs::generateFood(objPos blockOff)
     while(!isValidPos)
     {
 
-        randX = rand() % (boardSizeX - 2) + 1;
-        randY = rand() % (boardSizeY - 2) + 1;
+        randY = rand() % (boardSizeX - 2) + 1;
+        randX = rand() % (boardSizeY - 2) + 1;
 
         if(randX != blockOff.pos->x || randY != blockOff.pos->y) //want to access the characters position 
         {
