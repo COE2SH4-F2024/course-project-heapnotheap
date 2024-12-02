@@ -1,4 +1,5 @@
 #include "Player.h"
+using namespace std; 
 
 Player::Player(GameMechs *thisGMRef)
 {
@@ -101,7 +102,7 @@ void Player::movePlayer()
         playerPosList->getHeadElement().pos->x++;
         //newX.x++;
         //playerPosList->getHeadElement();
-        playerPosList->removeTail();
+        //playerPosList->removeTail();
         
         break;
 
@@ -112,7 +113,7 @@ void Player::movePlayer()
         playerPosList->getHeadElement();
         
         */
-       playerPosList->removeTail();
+       //playerPosList->removeTail();
         break;
 
     case UP:
@@ -121,14 +122,14 @@ void Player::movePlayer()
         playerPosList->getHeadElement();
         
         */
-        playerPosList->removeTail();
+        //playerPosList->removeTail();
         break;
 
     case DOWN:
         //playerPos.pos->y++;
         playerPosList->getHeadElement().pos->y++;
         //playerPosList->getHeadElement();
-        playerPosList->removeTail();
+        //playerPosList->removeTail();
         
         break;
 
@@ -138,7 +139,7 @@ void Player::movePlayer()
         return;
     }
 
-    if (playerPosList->getHeadElement().pos->x >= mainGameMechsRef->getBoardSizeX()) // wrap-around
+    if (currentHead.pos->x >= mainGameMechsRef->getBoardSizeX()) // wrap-around
     {
         playerPosList->getHeadElement().pos->x = 2;
     }
@@ -158,6 +159,7 @@ void Player::movePlayer()
 
     currentHead.setObjPos(playerPosList->getHeadElement().pos->x, playerPosList->getHeadElement().pos->y, currentHead.getSymbol());
     playerPosList ->insertHead(currentHead);
+    playerPosList->removeTail();
 
 }
 
