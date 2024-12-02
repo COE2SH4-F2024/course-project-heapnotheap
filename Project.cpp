@@ -3,6 +3,7 @@
 #include "objPos.h"
 #include "GameMechs.h"
 #include "Player.h"
+#include "objPosArrayList.h"
 
 using namespace std;
 
@@ -82,7 +83,7 @@ void DrawScreen(void)
 
     objPos foodPos = myGM-> getFoodPos(); 
 
-    MacUILib_printf("Player {x, y, sym} = {%d, %d, %c}\n", playerPos.pos ->x, playerPos.pos ->y, playerPos.symbol);
+    MacUILib_printf("Player {x, y, sym} = {%d, %d, %c}\n", playerPos.pos ->x, playerPos.pos ->y, playerPos.symbol );
     int boardX = myGM-> getBoardSizeX();
     int boardY = myGM-> getBoardSizeY();
 

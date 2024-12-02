@@ -11,6 +11,11 @@ Player::Player(GameMechs *thisGMRef)
     playerPosList = new objPosArrayList();
 
     objPos initialPos = {mainGameMechsRef->getBoardSizeX() / 2, mainGameMechsRef->getBoardSizeY() / 2 , '@'};
+    playerPosList->insertHead(initialPos);
+    
+    //playerPos.pos->x = mainGameMechsRef->getBoardSizeX() / 2;
+    //playerPos.pos->y = mainGameMechsRef->getBoardSizeY() / 2;
+    //playerPos.symbol = '@';
     
 }
 
@@ -122,7 +127,7 @@ void Player::movePlayer()
     case DOWN:
         //playerPos.pos->y++;
         playerPosList->getHeadElement().pos->y++;
-        playerPosList->getHeadElement();
+        //playerPosList->getHeadElement();
         playerPosList->removeTail();
         
         break;
