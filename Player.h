@@ -21,13 +21,14 @@ class Player
         objPos getPlayerPos() const; // Upgrade this in iteration 3.       
         void updatePlayerDir();
         void movePlayer();
-        objPosArrayList* getPlayerPos() const;
+        //objPosArrayList* getPlayerPos() const;
 
         // More methods to be added here
 
     private:
            
         enum Dir myFSMMode;
+        objPos playerPos;
 
         // Need a reference to the Main Game Mechanisms
         GameMechs* mainGameMechsRef;
