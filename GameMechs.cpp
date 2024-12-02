@@ -58,10 +58,10 @@ void GameMechs::collectAsynchInput()
         input = MacUILib_getChar();
     }
 
-    //if(input == ' ')
-    //{
-      //  setExitTrue();
-    //}
+    if(input == ' ')
+    {
+       setExitTrue();
+    }
 }
 
 

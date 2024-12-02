@@ -28,7 +28,7 @@ int main(void)
 
     Initialize();
 
-    while (exitFlag = 1)
+    while (myGM-> getExitFlagStatus() == false)
     {
         GetInput();
         RunLogic();
@@ -57,20 +57,20 @@ void GetInput(void)
 void RunLogic(void)
 {
 
-    myPlayer->updatePlayerDir();
     myPlayer->movePlayer();
+    myPlayer->updatePlayerDir();
 
     
-    //if (myGM-> getInput() != '\0')
-    //{
-        //myPlayer->updatePlayerDir();
-    //}
+    if (myGM->getInput() != '\0')
+    {
+        myPlayer->updatePlayerDir();
+    }
     
 
-    //if (myGM->getInput() == ' ') // if the player puts in an input of space, it exits the gaem
-    //{
-        //myGM->setExitTrue();
-    //}
+    if (myGM->getInput() == ' ') // if the player puts in an input of space, it exits the gaem
+    {
+        myGM->setExitTrue();
+    }
     //fix exit flag
 
 }
