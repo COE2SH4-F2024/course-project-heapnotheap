@@ -70,6 +70,7 @@ void RunLogic(void)
     //{
         //myGM->setExitTrue();
     //}
+    //fix exit flag
 
 }
 
