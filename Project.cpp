@@ -61,10 +61,10 @@ void RunLogic(void)
     myPlayer->movePlayer();
     
 
-    /*if (myGM->getInput() == ' ') // if the player puts in an input of space, it exits the gaem
+    if (myGM->getInput() == ' ') // if the player puts in an input of space, it exits the gaem
     {
         myGM->setExitTrue();
-    }*/
+    }
 
 }
 
@@ -75,8 +75,9 @@ void DrawScreen(void)
     objPosArrayList* playerPos = myPlayer -> getPlayerPos();  
     objPos foodPos = myGM-> getFoodPos(); 
 
-    MacUILib_printf("Player {x, y, sym} = {%d, %d, %c}\n", playerPos->getHeadElement().pos->x, playerPos->getHeadElement().pos->y, playerPos->getHeadElement().symbol );
-    MacUILib_printf("score is: %d\n" , myGM->getScore());
+    //MacUILib_printf("Player {x, y, sym} = {%d, %d, %c}\n", playerPos->getHeadElement().pos->x, playerPos->getHeadElement().pos->y, playerPos->getHeadElement().symbol );
+    MacUILib_printf("----SNAKE GAME!!! :D----\n");
+    MacUILib_printf("Your current score is: %d\n" , myGM->getScore());
     int boardX = myGM-> getBoardSizeX();
     int boardY = myGM-> getBoardSizeY();
 
@@ -101,7 +102,7 @@ void DrawScreen(void)
             
             else 
             {
-                bool isPrinted = false;
+                bool isPrinted = false; //snake body generation 
                 for(int k = 0; k<playerPos->getSize(); k++)
                 {
                     if(i == playerPos->getElement(k).pos->y && j == playerPos->getElement(k).pos->x)
@@ -112,17 +113,11 @@ void DrawScreen(void)
                     }
                 }
 
-                if (!isPrinted)
+                if (!isPrinted) //boarder 
                 {
                     MacUILib_printf(" ");
                 }
-            }
-          
-
-            /*else if (i ==  playerPos->getHeadElement().pos->y && j == playerPos->getHeadElement().pos->x)
-            {
-                MacUILib_printf("%c", playerPos->getHeadElement().symbol);
-            }*/  
+            } 
                 
         }
             
@@ -131,9 +126,8 @@ void DrawScreen(void)
     }
 
     MacUILib_printf("How to play!\nPress A, W, S, D to move 'Moe'\nA: Left, D: Right, W: Up, S: Down\n"); 
-    MacUILib_printf("To change the speed press:\nLevel 1: - Level 2: ; Level 3: / Level 4: . Level 5: ,\n"); 
-    MacUILib_printf("Your current coordinates are: %d, %d\n", playerPos->getHeadElement().pos->x, playerPos->getHeadElement().pos->y);
-    MacUILib_printf("foods current coorinates are [%d, %d]\n", foodPos.pos->x, foodPos.pos->y);
+    MacUILib_printf("Your current coordinates are: [%d, %d]\n", playerPos->getHeadElement().pos->x, playerPos->getHeadElement().pos->y);
+    MacUILib_printf("The food's coordinates are: [%d, %d]\n", foodPos.pos->x, foodPos.pos->y);
     MacUILib_printf("Current key pressed is %c", myGM->getInput());
 
 }

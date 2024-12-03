@@ -47,6 +47,11 @@ char GameMechs::getInput()
     {
         input = MacUILib_getChar();
     }
+
+    if(input == ' ')
+    {
+       setExitTrue();
+    }
     
     return input;
 }
