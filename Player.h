@@ -18,17 +18,20 @@ class Player
         Player(GameMechs* thisGMRef);
         ~Player();
 
-        objPos getPlayerPos() const; // Upgrade this in iteration 3.       
+        objPosArrayList* getPlayerPos() const; // Upgrade this in iteration 3.       
         void updatePlayerDir();
         void movePlayer();
-        //objPosArrayList* getPlayerPos() const;
+
+        bool checkFoodConsumption();
+        void increasePlayerLength();
+        bool checkSelfCollision(); 
 
         // More methods to be added here
 
     private:
            
         enum Dir myFSMMode;
-        objPos playerPos;
+        //objPos playerPos;
 
         // Need a reference to the Main Game Mechanisms
         GameMechs* mainGameMechsRef;

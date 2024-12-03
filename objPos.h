@@ -31,6 +31,7 @@ class objPos
         ~objPos();
         
         void setObjPos(objPos o);        
+        objPos& operator=(const objPos &o);
         void setObjPos(int xPos, int yPos, char sym);  
 
         objPos getObjPos() const;

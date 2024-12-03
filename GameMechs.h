@@ -44,11 +44,11 @@ class GameMechs
         
         // More methods should be added here
         // this allows for multiplayer keyboard interaction
-        char collectAsynchInput();
+        // char collectAsynchInput();
 
 
         //food functions 
-        void generateFood(objPos blockOff); //function which takes in type objPos which contains coordinates of player 
+        void generateFood(objPosArrayList *blockOff); //function which takes in type objPos which contains coordinates of player 
         objPos getFoodPos() const; //return type objPos 
 };
 

@@ -1,9 +1,8 @@
 #include <iostream>
 #include "MacUILib.h"
 #include "objPos.h"
-#include "GameMechs.h"
 #include "Player.h"
-#include "objPosArrayList.h"
+
 
 using namespace std;
 
@@ -48,29 +47,31 @@ void Initialize(void)
     myPlayer = new Player(myGM);
     //exitFlag = false;
     myGM->generateFood(myPlayer->getPlayerPos());
+
+    srand(time(NULL));
 }
 
 void GetInput(void)
 {
-    myGM->collectAsynchInput();
+    myGM->getInput();
 }
 
 void RunLogic(void)
 {
-
+    myPlayer->updatePlayerDir();
     myPlayer->movePlayer();
 
     
-    if (myGM->getInput() != '\0')
+    /*if (myGM->getInput() != '\0')
     {
         myPlayer->updatePlayerDir();
-    }
+    }*/
     
 
-    if (myGM->getInput() == ' ') // if the player puts in an input of space, it exits the gaem
+    /*if (myGM->getInput() == ' ') // if the player puts in an input of space, it exits the gaem
     {
         myGM->setExitTrue();
-    }
+    }*/
     
 
 
@@ -80,54 +81,51 @@ void DrawScreen(void)
 {
 
     MacUILib_clearScreen(); 
-    objPos playerPos = myPlayer -> getPlayerPos();  
+    objPosArrayList* playerPos = myPlayer -> getPlayerPos();  
 
     objPos foodPos = myGM-> getFoodPos(); 
 
-    MacUILib_printf("Player {x, y, sym} = {%d, %d, %c}\n", playerPos.pos ->x, playerPos.pos ->y, playerPos.symbol );
+    MacUILib_printf("Player {x, y, sym} = {%d, %d, %c}\n", playerPos->getHeadElement().pos->x, playerPos->getHeadElement().pos->y, playerPos->getHeadElement().symbol );
     int boardX = myGM-> getBoardSizeX();
     int boardY = myGM-> getBoardSizeY();
 
     int i, j;
 
-    for (i=0; i<=boardX; i++)
+    for (i=0; i< boardY; i++)
     {
 
-        for(j=0; j<= boardY; j++)
+        for(j=0; j< boardX; j++)
         {
            
-            if (j == 0 || j == boardY || i == 0 || i == boardX)
-                {
-                    MacUILib_printf("#");
-                }
-
-           
-            else{
-
-                if (i == playerPos.pos ->x && j == playerPos.pos ->y)
-                {
-                    MacUILib_printf("%c", playerPos.symbol);
-                }
-
-                else if(j == foodPos.pos->x  && i == foodPos.pos->y)
-                {
-                    MacUILib_printf("%c", foodPos.symbol); //printing food symbol
-                }   
-                
-
-            else 
-                {
-                    MacUILib_printf(" ");
-                }
+            if (j == 0 || j == boardX - 1|| i == 0 || i == boardY - 1)
+            {
+                MacUILib_printf("#");
             }
+
             
+            else if (i ==  playerPos->getHeadElement().pos->y && j == playerPos->getHeadElement().pos->x)
+            {
+                MacUILib_printf("%c", playerPos->getHeadElement().symbol);
+            }
+
+            else if(j == foodPos.pos->x  && i == foodPos.pos->y)
+            {
+                MacUILib_printf("%c", foodPos.symbol); //printing food symbol
+            }   
+                
+            else 
+            {
+                MacUILib_printf(" ");
+            }
         }
+            
+        
         MacUILib_printf("\n");
     }
 
     MacUILib_printf("How to play!\nPress A, W, S, D to move 'Moe'\nA: Left, D: Right, W: Up, S: Down\n"); 
     MacUILib_printf("To change the speed press:\nLevel 1: - Level 2: ; Level 3: / Level 4: . Level 5: ,\n"); 
-    MacUILib_printf("Your current coordinates are: %d, %d\n", playerPos.pos->x, playerPos.pos->y);
+    MacUILib_printf("Your current coordinates are: %d, %d\n", playerPos->getHeadElement().pos->x, playerPos->getHeadElement().pos->y);
     MacUILib_printf("foods current coorinates are [%d, %d]\n", foodPos.pos->x, foodPos.pos->y);
     MacUILib_printf("Current key pressed is %c", myGM->getInput());
 
@@ -142,6 +140,19 @@ void LoopDelay(void)
 void CleanUp(void)
 {
     MacUILib_clearScreen();
+
+    if(myGM->getLoseFlagStatus())
+    {
+        MacUILib_printf("womp womp, try again");
+    }
+
+    else
+    {
+        MacUILib_printf("play again!");
+    }
+
+    delete myGM;
+    delete myPlayer;
 
     MacUILib_uninit();
 }

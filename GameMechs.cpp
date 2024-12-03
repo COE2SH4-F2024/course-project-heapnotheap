@@ -9,8 +9,8 @@ GameMechs::GameMechs()
     exitFlag = false;
     loseFlag = false;
     score = 0;
-    boardSizeX = 15; 
-    boardSizeY = 30;
+    boardSizeX = 30; 
+    boardSizeY = 15;
     foodPos.setObjPos(2, 3, 'o'); //initializes first food to be outside gameboard
 }
 
@@ -51,7 +51,7 @@ char GameMechs::getInput()
     return input;
 }
 
-char GameMechs::collectAsynchInput()
+/*char GameMechs::collectAsynchInput()
 {
     if(MacUILib_hasChar())
     {
@@ -62,7 +62,7 @@ char GameMechs::collectAsynchInput()
     {
        setExitTrue();
     }
-}
+}*/
 
 
 int GameMechs::getScore() const
@@ -111,7 +111,7 @@ void GameMechs::clearInput()
 
 
 
-void GameMechs::generateFood(objPos blockOff)
+void GameMechs::generateFood(objPosArrayList *blockOff)
 {
     //while food position != player position 
 
@@ -125,13 +125,17 @@ void GameMechs::generateFood(objPos blockOff)
     while(!isValidPos)
     {
 
-        randY = rand() % (boardSizeX - 2) + 1;
-        randX = rand() % (boardSizeY - 2) + 1;
+        randX = rand() % (boardSizeX - 2) + 1;
+        randY = rand() % (boardSizeY - 2) + 1;
 
-        if(randX != blockOff.pos->x || randY != blockOff.pos->y) //want to access the characters position 
+        for(int i=0; i< blockOff->getSize(); i++)
         {
-            isValidPos = true; //checks to see if its not same as player, if not same then condition met and leaves loop
+            if(randX != blockOff->getElement(i).pos->x && randY != blockOff->getElement(i).pos->y) //want to access the characters position 
+            {
+                isValidPos = true; //checks to see if its not same as player, if not same then condition met and leaves loop
+            }
         }
+             
     } 
 
     foodPos.setObjPos(randX, randY, 'o'); //sets food coordinates
