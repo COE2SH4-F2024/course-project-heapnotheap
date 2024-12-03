@@ -50,6 +50,7 @@ class GameMechs
         //food functions 
         void generateFood(objPosArrayList *blockOff); //function which takes in type objPos which contains coordinates of player 
         objPos getFoodPos() const; //return type objPos 
+        void setFoodPos(int x, int y, char symbol);
 };
 
 #endif

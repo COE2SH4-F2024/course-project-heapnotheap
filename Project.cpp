@@ -47,7 +47,6 @@ void Initialize(void)
     myPlayer = new Player(myGM);
     //exitFlag = false;
     myGM->generateFood(myPlayer->getPlayerPos());
-
     srand(time(NULL));
 }
 
@@ -60,20 +59,12 @@ void RunLogic(void)
 {
     myPlayer->updatePlayerDir();
     myPlayer->movePlayer();
-
-    
-    /*if (myGM->getInput() != '\0')
-    {
-        myPlayer->updatePlayerDir();
-    }*/
     
 
     /*if (myGM->getInput() == ' ') // if the player puts in an input of space, it exits the gaem
     {
         myGM->setExitTrue();
     }*/
-    
-
 
 }
 
@@ -82,10 +73,10 @@ void DrawScreen(void)
 
     MacUILib_clearScreen(); 
     objPosArrayList* playerPos = myPlayer -> getPlayerPos();  
-
     objPos foodPos = myGM-> getFoodPos(); 
 
     MacUILib_printf("Player {x, y, sym} = {%d, %d, %c}\n", playerPos->getHeadElement().pos->x, playerPos->getHeadElement().pos->y, playerPos->getHeadElement().symbol );
+    MacUILib_printf("score is: %d\n" , myGM->getScore());
     int boardX = myGM-> getBoardSizeX();
     int boardY = myGM-> getBoardSizeY();
 
@@ -97,26 +88,42 @@ void DrawScreen(void)
         for(j=0; j< boardX; j++)
         {
            
-            if (j == 0 || j == boardX - 1|| i == 0 || i == boardY - 1)
+            if (j == 0 || j == boardX - 1|| i == 0 || i == boardY - 1) //game board
             {
                 MacUILib_printf("#");
             }
 
-            
-            else if (i ==  playerPos->getHeadElement().pos->y && j == playerPos->getHeadElement().pos->x)
-            {
-                MacUILib_printf("%c", playerPos->getHeadElement().symbol);
-            }
-
-            else if(j == foodPos.pos->x  && i == foodPos.pos->y)
+            else if (j == foodPos.pos->x  && i == foodPos.pos->y) //food
             {
                 MacUILib_printf("%c", foodPos.symbol); //printing food symbol
-            }   
-                
+            }
+
+            
             else 
             {
-                MacUILib_printf(" ");
+                bool isPrinted = false;
+                for(int k = 0; k<playerPos->getSize(); k++)
+                {
+                    if(i == playerPos->getElement(k).pos->y && j == playerPos->getElement(k).pos->x)
+                    {
+                        MacUILib_printf("%c", playerPos->getElement(k).symbol);
+                        isPrinted = true;
+                        break;
+                    }
+                }
+
+                if (!isPrinted)
+                {
+                    MacUILib_printf(" ");
+                }
             }
+          
+
+            /*else if (i ==  playerPos->getHeadElement().pos->y && j == playerPos->getHeadElement().pos->x)
+            {
+                MacUILib_printf("%c", playerPos->getHeadElement().symbol);
+            }*/  
+                
         }
             
         

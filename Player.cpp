@@ -146,19 +146,28 @@ void Player::movePlayer()
                 }
                 break;
             }
-    }
+
+    
 
     //currentHead.setObjPos(playerPosList->getHeadElement().pos->x, playerPosList->getHeadElement().pos->y, currentHead.getSymbol());
-    getPlayerPos()->insertHead(currentHead);
-    if (checkSelfCollision())
-    {
-        if(checkFoodConsumption())
+        getPlayerPos()->insertHead(currentHead);
+
+        if (!checkSelfCollision())
         {
-            increasePlayerLength();
+            if(checkFoodConsumption())
+            {
+                increasePlayerLength();
+            }
+            else
+            {
+                getPlayerPos()->removeTail();
+            }
         }
+
         else
         {
-            getPlayerPos()->removeTail();
+            mainGameMechsRef->setLoseFlag();
+            mainGameMechsRef->setExitTrue();
         }
     }
 
@@ -170,12 +179,15 @@ bool Player::checkFoodConsumption()
     objPos snakeHead = getPlayerPos()->getHeadElement();
     objPos foodYum = mainGameMechsRef->getFoodPos();
 
-    if(snakeHead.pos->x == foodYum.pos->x && snakeHead.pos->y == foodYum.pos->y)
+    if((snakeHead.pos->x == foodYum.pos->x) && (snakeHead.pos->y == foodYum.pos->y))
     {
         return true; //checking to see if food was eaten 
     }
 
-    return false;
+    else
+    {
+        return false;
+    } 
 }
 
 

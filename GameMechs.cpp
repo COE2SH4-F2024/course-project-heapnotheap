@@ -109,6 +109,11 @@ void GameMechs::clearInput()
 
 // More methods should be added here
 
+void GameMechs::setFoodPos(int x, int y, char symbol)
+{
+    foodPos.setObjPos(x, y, symbol);
+}
+
 
 
 void GameMechs::generateFood(objPosArrayList *blockOff)
@@ -116,8 +121,6 @@ void GameMechs::generateFood(objPosArrayList *blockOff)
     //while food position != player position 
 
     //random coordinate generation for food
-    srand(time(NULL));
-
     bool isValidPos = false;
     int randX;
     int randY;
@@ -133,12 +136,12 @@ void GameMechs::generateFood(objPosArrayList *blockOff)
             if(randX != blockOff->getElement(i).pos->x && randY != blockOff->getElement(i).pos->y) //want to access the characters position 
             {
                 isValidPos = true; //checks to see if its not same as player, if not same then condition met and leaves loop
+                setFoodPos(randX, randY, 'o');
             }
-        }
-             
+        }             
     } 
 
-    foodPos.setObjPos(randX, randY, 'o'); //sets food coordinates
+     //sets food coordinates
 
 
     
